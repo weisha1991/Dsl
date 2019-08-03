@@ -18,6 +18,8 @@
 #include "l0-infra/trans-dsl/action/Actor.h"
 #include "l0-infra/trans-dsl/sched/helper/TransactionHelper.h"
 
+USING_TSL_NS
+
 __def_transaction
 ( __sequential
    ( __wait(1)

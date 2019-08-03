@@ -16,7 +16,7 @@ using namespace ev;
 namespace
 {
 
-	struct EntryInst: transExample
+	struct EntryInst:x2hod
 	{
 
 
@@ -28,9 +28,11 @@ namespace
 
 int main()
 {
-
 	std::cout << "StartTrans" <<std::endl;
-	mccInst.handleEvent(SimpleEventInfo(1));
+	mccInst.updateTimerInfo(timerInfo);
+	mccInst.start();
+	std::cout <<mccInst.handleEvent(EVENT(X2_HO_REQ)) << std::endl;
+
 }
 
 

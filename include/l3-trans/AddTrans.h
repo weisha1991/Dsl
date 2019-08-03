@@ -231,6 +231,14 @@ __def(X2HodPrepare) __as_procedure
 , __finally(__on_fail_except(E_CANCELED, __apply(X2HodAck)))
 );
 
+struct MyTimerInfo : TimerInfo
+{
+   U32 getTimerLen(const TimerId) const
+   {
+      return 10;
+   }
+} timerInfo;
+
 /////////////////////////////////////////////////////////////
 __def(PathSwitch) __as
 ( __sequential
@@ -343,7 +351,7 @@ __def(X2HodCleanup) __as
 ( __optional(HasFailedErab, __apply(CleanupFailedErab)));
 
 /////////////////////////////////////////////////////////////
-__mt_transaction
+__def_mt_transaction
 ( __sequential
    ( __fork(WAIT_CANCEL_THREAD, __sequential
 								  ( __apply(WaitX2HosCancel)

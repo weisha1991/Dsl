@@ -6,7 +6,7 @@
  */
 
 #include "l0-infra/trans-dsl/sched/action/SchedWaitAction.h"
-
+#include "l0-infra/base/log/log.h"
 #include <l0-infra/event/concept/Event.h>
 
 TSL_NS_BEGIN
@@ -24,6 +24,7 @@ Status SchedWaitAction::handleEvent(TransactionContext&, const ev::Event& event)
 {
    if(event.matches(getEventId()))
    {
+	   DBG_LOG("waitAction match event[eventId=%u]",  event.getEventId());
       event.consume();
       return TSL_SUCCESS;
    }

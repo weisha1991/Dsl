@@ -6,6 +6,8 @@
  */
 
 #include <l3-trans/testTrans.h>
+#include "l3-trans/AddTrans.h"
+
 #include <iostream>
 #include "l0-infra/trans-dsl/sched/helper/TransactionHelper.h"
 

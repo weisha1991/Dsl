@@ -1,0 +1,41 @@
+/*
+ * TslStatus.h
+ *
+ *  Created on: Jun 22, 2016
+ *      Author: darwin
+ */
+
+#ifndef INCLUDE_L0_INFRA_TRANS_DSL_TSLSTATUS_H_
+#define INCLUDE_L0_INFRA_TRANS_DSL_TSLSTATUS_H_
+
+#include <l0-infra/base/Status.h>
+
+#include "l0-infra/trans-dsl/tsl.h"
+
+enum TslStatus : Status
+{
+	TSL_SUCCESS   = CUB_SUCCESS,
+
+
+	TSL_FATAL_BUG = CUB_FATAL_BUG,
+	TSL_FAILED    = CUB_FAILURE,
+
+    TSL_RESERVED_FAILURE = CUB_RESERVED_FAILURE,
+
+	__TSL_STATUS_BEGIN = 100,
+
+    TSL_CONTINUE       = succStatus(__TSL_STATUS_BEGIN),
+    TSL_UNKNOWN_EVENT,
+
+	TSL_OUT_OF_SCOPE   = failStatus(__TSL_STATUS_BEGIN),
+	TSL_DUPTID,
+	TSL_INVALID_DATA,
+	TSL_TIMEDOUT,
+	TSL_RESTART_REQUIRED,
+	TSL_NOTHING_CHANGED,
+
+	TSL_FORCE_STOPPED
+
+};
+
+#endif /* INCLUDE_L0_INFRA_TRANS_DSL_TSLSTATUS_H_ */

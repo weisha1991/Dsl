@@ -1,7 +1,7 @@
 /*
  * AddTrans.h
  *
- *  Created on: 2019Äê8ÔÂ3ÈÕ
+ *  Created on: 2019ï¿½ï¿½8ï¿½ï¿½3ï¿½ï¿½
  *      Author: zhengbinlong
  */
 
@@ -354,8 +354,8 @@ __def(X2HodCleanup) __as
 __def_mt_transaction
 ( __sequential
    ( __fork(WAIT_CANCEL_THREAD, __sequential
-								  ( __apply(WaitX2HosCancel)
-								  , __throw(E_CANCELED)))
+                              ( __apply(WaitX2HosCancel)
+                              , __throw(E_CANCELED)))
    , __apply(X2HodPrepare)
    , __apply(X2HodExecute)
    , __apply(X2HodCleanup))

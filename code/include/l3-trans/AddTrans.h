@@ -1,10 +1,3 @@
-/*
- * AddTrans.h
- *
- *  Created on: 2019��8��3��
- *      Author: zhengbinlong
- */
-
 #ifndef INCLUDE_L3_TRANS_ADDTRANS_H_
 #define INCLUDE_L3_TRANS_ADDTRANS_H_
 

@@ -8,6 +8,7 @@
 #include "l0-infra/trans-dsl/sched/helper/TransactionHelper.h"
 #include "l0-infra/trans-dsl/ext/multi-thread/helper/MultiThreadTransactionHelper.h"
 #include <l0-infra/trans-dsl/TransactionDSL.h>
+#include "l3-trans/frag/Trans.h"
 
 TSL_NS_BEGIN
 
@@ -38,7 +39,7 @@ template<typename T_ACTION, typename T_CONTEXT,
 struct GenericSimpleMtTrans
     : GenericTransaction<T_CONTEXT, T_LISTENER, T_TIMERMANGET>
 {
-    GenericSimpleMtTrans(const Instance iid)
+    GenericSimpleMtTrans(const InstanceId iid)
         : GenericTransaction<T_CONTEXT, T_LISTENER, T_TIMERMANGET>(iid)
     {
 

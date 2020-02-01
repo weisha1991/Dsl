@@ -1,10 +1,3 @@
-/*
- * UeTranaction.h
- *
- *  Created on: 2019Äê8ÔÂ3ÈÕ
- *      Author: zhengbinlong
- */
-
 #ifndef INCLUDE_L3_TRANS_TESTTRANS_H_
 #define INCLUDE_L3_TRANS_TESTTRANS_H_
 

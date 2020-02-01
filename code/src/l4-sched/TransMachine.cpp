@@ -102,7 +102,7 @@ const InstanceId& TransMachine::getInstanceId()
     return iid;
 }
 
-void TransMachine::idleStateHandle(const ev::Event &event, bool Status)
+void TransMachine::idleStateHandle(const ev::Event &event, bool status)
 {
     if(status)
     {

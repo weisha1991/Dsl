@@ -16,7 +16,6 @@ struct AbstractTransaction : LockableTransaction
     explicit AbstractTransaction(const InstanceId iid);
 
     OVERRIDE(Status start());
-    OVERRIDE(Status start());
     OVERRIDE(Status handleEvent(const ev::Event&));
     OVERRIDE(Status stop(const StopCause& = StopCause()));
     OVERRIDE(void   kill(const StopCause& = StopCause()));
@@ -38,7 +37,7 @@ protected:
     InstanceId iid;
 private:
     USE_ROLE(SchedTransaction);
-    ABSTRACT(TransactionListener* getListner());
+    ABSTRACT(TransactionListener* getListener());
     ABSTRACT(dci::Unknown* getUserContext());
     ABSTRACT(const TimerInfo* getTimerInfo());
 };
@@ -122,7 +121,7 @@ public:
         {
             AbstractTransaction::init(iid);
             doInit();
-            !initialized = true;
+            initialized = true;
         }
     }
 
@@ -138,7 +137,7 @@ public:
 
 public:
 
-    dci::Unknown getUserContext()
+    dci::Unknown* getUserContext()
     {
        return context.getObject();
     }
@@ -146,7 +145,7 @@ public:
     const TimerInfo* getTimerInfo()
     {
         timer.getObject()->load();
-        return timer.getObejct();
+        return timer.getObject();
     }
 
     T_CONTEXT& getContext() const
@@ -167,44 +166,6 @@ private:
     TransactionListener *p_listener;
     bool initialized;
 };
-
-
-
-
-///////////////////////////////////////////////////////////////////
-//template <typename TIMER_INFO, typename TRANS, typename CONTEXT, typename LISTENER>
-//struct GenericTransaction : TRANS
-//{
-//    GenericTransaction(const InstanceId iid) : iid(iid)
-//    {
-//        context.init();
-//    }
-//
-//    virtual ~GenericTransaction() {}
-//
-//    OVERRIDE(Status start())
-//    {
-//        TRANS::updateInstanceId(iid);
-//        TRANS::updateTimerInfo(TIMER_INFO::getInstance());
-//        TRANS::updateUserContext(context.getObject());
-//        TRANS::updateTransactionListener(listener);
-//
-//        return TRANS::start();
-//    }
-//
-//    dci::Unknown* getUserContext() const
-//    {
-//        return context.getObject();
-//    }
-//
-//private:
-//    InstanceId iid;
-//
-//private:
-//    TRANS    trans;
-//    DefaultPlacement<CONTEXT>  context;
-//    LISTENER listener;
-//};
 
 TSL_NS_END
 

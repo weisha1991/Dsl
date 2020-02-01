@@ -1,10 +1,3 @@
-/*
- * main.cpp
- *
- *  Created on: 2019��8��3��
- *      Author: zhengbinlong
- */
-
 #include <l3-trans/testTrans.h>
 #include <l4-sched/TransMachine.h>
 #include "l3-trans/AddTrans.h"
@@ -36,10 +29,11 @@ namespace
 {
     std::vector<EventId> transMsgVec{X2_HO_REQ};
 
-    struct MccInst: TransMachine
+    struct MccInst: dci::Unknown
+                    ,TransMachine
                     , private x2hod
     {
-        MccInst() :TransMachine(this, transMsgVec)
+        MccInst() :TransMachine(this, transMsgVec), x2hod(TransMachine::iid)
         {
 
         }
@@ -58,9 +52,9 @@ namespace
     {
 
         std::cout << "StartTrans" <<std::endl;
-        mccInst.updateTimerInfo(timerInfo);
-        mccInst.start();
-        std::cout << mccInst.handleEvent(ConsecutiveEventInfo(msgId, msg ,msgSize)) << std::endl;
+        // mccInst.updateTimerInfo(timerInfo);
+        // mccInst.start();
+        // std::cout << mccInst.handleEvent(ConsecutiveEventInfo(msgId, msg ,msgSize)) << std::endl;
 
         setNextWorkState(OpState::OP_WORK);
         return 0;
@@ -69,7 +63,7 @@ namespace
     Status handleOnWork(U32 msgId, void *msg, U32 msgSize)
     {
         setNextWorkState(OpState::OP_WORK);
-        std::cout << mccInst.handleEvent(ConsecutiveEventInfo(msgId, msg ,msgSize)) << std::endl;
+        // std::cout << mccInst.handleEvent(ConsecutiveEventInfo(msgId, msg ,msgSize)) << std::endl;
         return 0;
     }
 

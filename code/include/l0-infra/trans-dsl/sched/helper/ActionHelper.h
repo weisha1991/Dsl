@@ -46,10 +46,10 @@ TSL_NS_END
 
 ////////////////////////////////////////////////////////////////////////
 #define __asyn(action, ...) \
-       TSL_NS::details::ASYN__< action __VA_ARGS__ >
+       TSL_NS::details::ASYN__< action##__VA_ARGS__ >
 
 #define __sync(action, ...) \
-       TSL_NS::details::SYNC__< action __VA_ARGS__ >
+       TSL_NS::details::SYNC__< action##__VA_ARGS__ >
 
 ////////////////////////////////////////////////////////////////////////
 #define __ind(...)  __sync(__VA_ARGS__)

@@ -7,6 +7,7 @@
 #include <l0-infra/trans-dsl/tsl.h>
 #include "l0-infra/trans-dsl/sched/helper/TransactionHelper.h"
 #include "l0-infra/trans-dsl/ext/multi-thread/helper/MultiThreadTransactionHelper.h"
+#include <l0-infra/trans-dsl/TransactionDSL.h>
 
 TSL_NS_BEGIN
 
@@ -50,11 +51,11 @@ private:
     IMPL_ROLE_WITH_OBJ(SchedTransaction, trans);
 };
 
-#define DEF_SIMPLE_TRANS(ClassName, ActionClass, ContextClass, TimrManagerClass, TIMER_ID, ...) \
-        typedef GenericSimpleTrans<__apply(ActionClass), ContextClass, ContextClass, TimerManagerClass, TIMER_ID, ##__VA_ARGS__> ClassName
+#define DEF_SIMPLE_TRANS(ClassName, ActionClass, ContextClass, TimerManagerClass, TIMER_ID, ...) \
+        typedef GenericSimpleTrans<__apply(ActionClass), ContextClass, TimerManagerClass, TIMER_ID, ##__VA_ARGS__> ClassName
 
-#define DEF_SIMPLE_MT_TRANS(ClassName, ActionClass, ContextClass, TimrManagerClass, TIMER_ID, ...) \
-        typedef GenericSimpleMtTrans<__apply(ActionClass), ContextClass, ContextClass, TimerManagerClass, TIMER_ID, ##__VA_ARGS__> ClassName
+#define DEF_SIMPLE_MT_TRANS(ClassName, ActionClass, ContextClass, TimerManagerClass, TIMER_ID, ...) \
+        typedef GenericSimpleMtTrans<__apply(ActionClass), ContextClass, TimerManagerClass, TIMER_ID, ##__VA_ARGS__> ClassName
 
 
 

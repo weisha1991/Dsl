@@ -12,6 +12,7 @@
 #include <l0-infra/trans-dsl/sched/helper/ThrowHelper.h>
 #include <l0-infra/trans-dsl/sched/helper/WaitHelper.h>
 #include <l0-infra/trans-dsl/TransactionDSL.h>
+#include <l3-trans/TransactionHelper.h>
 #include "l0-infra/event/impl/SimpleEventInfo.h"
 #include "l0-infra/event/concept/Event.h"
 #include "l0-infra/trans-dsl/sched/concept/TransactionInfo.h"
@@ -362,7 +363,7 @@ __def(x2hodTrans) __as_procedure
    )
 );
 
-__def()
+
 struct MccTimerManager: TimerInfo
 {
     MccTimerManager(){}

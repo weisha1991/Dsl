@@ -221,7 +221,9 @@ __def(TransDataConfirm)  __as ( __nop() );
 /////////////////////////////////////////////////////////////
 __def(X2HodPrepare) __as_procedure
 ( __sequential
-   ( __apply(X2HodReq)
+   (
+   __req()
+   ,__apply(X2HodReq)
    , __apply(RrmAdmit)
    , __apply(DbReadDrbParams)
    , __timer_prot(BRS_TIMER, __apply(BrsNormalFwdTunnelSetup))

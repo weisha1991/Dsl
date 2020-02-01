@@ -20,7 +20,7 @@ struct MultiThreadTransactionScheduler
    : MultiThreadScheduler
    , BaseTransactionScheduler
 {
-   explicit MultiThreadTransactionScheduler(const InstanceId iid = 0);
+   explicit MultiThreadTransactionScheduler(const InstanceId iid = InstanceId(0));
 
    OVERRIDE(Status start(ActionThread&));
    OVERRIDE(Status handleEvent(const ev::Event&));

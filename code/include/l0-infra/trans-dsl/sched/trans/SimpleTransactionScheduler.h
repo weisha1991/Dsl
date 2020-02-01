@@ -19,8 +19,8 @@ TSL_NS_BEGIN
 struct SimpleTransactionScheduler
    : BaseTransactionScheduler
 {
-   explicit SimpleTransactionScheduler(InstanceId iid = 0);
-   explicit SimpleTransactionScheduler(RuntimeContext& runtimeContext, InstanceId iid = 0);
+   explicit SimpleTransactionScheduler(InstanceId iid = InstanceId(0));
+   explicit SimpleTransactionScheduler(RuntimeContext& runtimeContext, InstanceId iid = InstanceId(0));
 
    OVERRIDE(Status start(ActionThread&));
    OVERRIDE(Status handleEvent(const Event&));

@@ -12,6 +12,7 @@
 
 struct IdleState : SchedState
 {
+    using SchedState::SchedState;
     OVERRIDE(Status enter(const Event &event));
     OVERRIDE(Status handleEvent(const Event &));
 };

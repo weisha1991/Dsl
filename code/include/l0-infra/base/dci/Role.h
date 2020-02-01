@@ -15,13 +15,18 @@ ROLE_PROTO_TYPE(role) override                                \
    return const_cast<role&>(static_cast<const role&>(*this)); \
 }
 
+#define IMPL_ROLE_WITH_MEMBER(role, member) \
+ROLE_PROTO_TYPE(role) override                                \
+{                                                             \
+   return const_cast<role&>(static_cast<const role&>(member)); \
+}
+
 //////////////////////////////////////////////////////////////////
 #define IMPL_ROLE_WITH_TYPE(role, type)                       \
 ROLE_PROTO_TYPE(role) override                                \
 {                                                             \
    return const_cast<type&>(static_cast<const type&>(*this)); \
 }
-
 
 #define __TYPE_VAR(type) type##var
 
@@ -74,14 +79,13 @@ private:                                                      \
 /////////////////////////////////////////////////////////////////////////////
 namespace dci
 {
-   template<typename T>
    struct Role
    {
       virtual ~Role() {}
    };
 }
 
-#define DEFINE_ROLE(role)  struct role : ::dci::Role<role>
+#define DEFINE_ROLE(role)  struct role : ::dci::Role
 
 #define SELF(self, role) static_cast<role&>(self)
 #define SELF_P(self, role) SELF(*self, role)

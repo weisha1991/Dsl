@@ -19,7 +19,7 @@ struct RuntimeContextInfo;
 
 struct SimpleTransactionInfo : TransactionInfo
 {
-   explicit SimpleTransactionInfo(InstanceId iid = 0);
+   explicit SimpleTransactionInfo(InstanceId iid = InstanceId(0));
 
    OVERRIDE(InstanceId getInstanceId() const);
    OVERRIDE(Status getStatus() const);
@@ -29,7 +29,7 @@ struct SimpleTransactionInfo : TransactionInfo
    void updateInstanceId(InstanceId iid);
 
 private:
-   InstanceId iid = 0;
+   InstanceId iid = InstanceId(0);
    dci::Unknown* userContext = nullptr;
 
 private:

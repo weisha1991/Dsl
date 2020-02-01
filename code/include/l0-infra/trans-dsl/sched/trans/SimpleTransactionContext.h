@@ -31,8 +31,8 @@ struct SimpleTransactionContext
          , protected TransMutexSchedulerAdapter
          , TransactionContext
 {
-    explicit SimpleTransactionContext(InstanceId iid = 0);
-    explicit SimpleTransactionContext(RuntimeContext& runtimeContext, InstanceId iid = 0);
+    explicit SimpleTransactionContext(InstanceId iid = InstanceId(0));
+    explicit SimpleTransactionContext(RuntimeContext& runtimeContext, InstanceId iid = InstanceId(0));
 
 private:
    IMPL_ROLE(TransactionInfo);

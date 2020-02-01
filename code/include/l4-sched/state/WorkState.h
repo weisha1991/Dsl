@@ -6,6 +6,7 @@
 
 struct WorkState : SchedState
 {
+    using SchedState::SchedState;
     OVERRIDE(Status enter(const Event&));
     OVERRIDE(Status handleEvent(const Event &));
     OVERRIDE(Status leave(const Status ret));

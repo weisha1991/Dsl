@@ -23,9 +23,9 @@ AbstractTransMutexScheduler::AbstractTransMutexScheduler()
 }
 
 ///////////////////////////////////////////////////////////////////
-#define BITMASK(n) (1 << n)
+#define BITMASK(n) (1 << (n))
 
-#define IS_LOCKED(mutex) lockBitmap & BITMASK(mutex)
+#define IS_LOCKED(mutex) ((lockBitmap) & BITMASK(mutex))
 
 ///////////////////////////////////////////////////////////////////
 Status AbstractTransMutexScheduler::lock(TransMutexId mutex)

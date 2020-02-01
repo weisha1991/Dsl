@@ -20,8 +20,8 @@ struct BaseTransactionScheduler
          : SimpleTransactionContext
          , TransactionScheduler
 {
-   explicit BaseTransactionScheduler(InstanceId iid = 0);
-   explicit BaseTransactionScheduler(RuntimeContext& runtimeContext, InstanceId iid = 0);
+   explicit BaseTransactionScheduler(InstanceId iid = InstanceId(0));
+   explicit BaseTransactionScheduler(RuntimeContext& runtimeContext, InstanceId iid = InstanceId(0));
 
    OVERRIDE(void updateInstanceId(InstanceId iid));
    OVERRIDE(void updateTimerInfo(const TimerInfo&));

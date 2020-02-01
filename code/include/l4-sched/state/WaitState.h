@@ -6,9 +6,10 @@
 
 struct WaitState : SchedState
 {
+    using SchedState::SchedState;
     WaitState(const WaitState &) = delete;
     WaitState& operator == (const WaitState&) = delete;
-    ~WaitState();
+    virtual ~WaitState();
 private:
     OVERRIDE(Status enter(const Event&));
     OVERRIDE(Status handleEvent(const Event &));

@@ -29,7 +29,9 @@ template<> struct PtrValueTraits<false>
 
 typedef typename PtrValueTraits<(sizeof(int*) == 8)>::PtrValue PTR_VALUE;
 
-
+using WORD32 = U32;
+using WORD64 = U64;
+using BYTE = U8;
 
 #endif
 

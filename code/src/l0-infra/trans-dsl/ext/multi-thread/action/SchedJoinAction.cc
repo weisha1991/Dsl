@@ -98,7 +98,7 @@ Status SchedJoinAction::handleEvent(TransactionContext&, const ev::Event& event)
 Status SchedJoinAction::join(const ActionThreadId threadId,
          TransactionContext& context)
 {
-   MultiThreadContext* mt = com::unknown_cast<MultiThreadContext>(&context);
+   MultiThreadContext* mt = dci::unknown_cast<MultiThreadContext>(&context);
    CUB_ASSERT_VALID_PTR(mt);
 
    Status result = TSL_SUCCESS;

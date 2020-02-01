@@ -39,7 +39,7 @@ DEFINE_ROLE(TransactionScheduler)
    ABSTRACT(void updateInstanceId(InstanceId iid));
    ABSTRACT(void updateTimerInfo(const TimerInfo&));
    ABSTRACT(void updateTransactionListener(TransactionListener&));
-   ABSTRACT(void updateUserContext(com::Unknown*));
+   ABSTRACT(void updateUserContext(dci::Unknown*));
    ABSTRACT(void updateMutexScheduler(TransMutexScheduler&));
 };
 

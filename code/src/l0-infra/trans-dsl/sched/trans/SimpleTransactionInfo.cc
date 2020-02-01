@@ -50,13 +50,13 @@ Status SimpleTransactionInfo::getStatus() const
 }
 
 /////////////////////////////////////////////////////////////////
-com::Unknown* SimpleTransactionInfo::getUserContext() const
+dci::Unknown* SimpleTransactionInfo::getUserContext() const
 {
    return userContext;
 }
 
 /////////////////////////////////////////////////////////////////
-void SimpleTransactionInfo::updateUserContext(com::Unknown* userContext)
+void SimpleTransactionInfo::updateUserContext(dci::Unknown* userContext)
 {
    this->userContext = userContext;
 }

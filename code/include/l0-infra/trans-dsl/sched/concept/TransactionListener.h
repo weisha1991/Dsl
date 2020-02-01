@@ -14,7 +14,9 @@
 #include <l0-infra/base/Default.h>
 #include <l0-infra/base/Status.h>
 #include <l0-infra/base/dci/Role.h>
+#include <l0-infra/base/Keywords.h>
 #include <l0-infra/event/event.h>
+#include <l0-infra/gof/Singleton.h>
 
 #include "l0-infra/trans-dsl/sched/concept/ActionId.h"
 
@@ -38,6 +40,14 @@ DEFINE_ROLE(TransactionListener)
 };
 
 TransactionListener& getNilTransactionListener();
+
+DEF_SINGLETON(NilTransactionListener) EXTENDS(TransactionListener)
+{
+    NilTransactionListener()
+    {
+
+    }
+};
 
 TSL_NS_END
 

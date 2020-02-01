@@ -23,12 +23,12 @@ DEFINE_ROLE(TransactionInfo)
 {
    ABSTRACT(InstanceId getInstanceId() const);
    ABSTRACT(Status getStatus() const);
-   ABSTRACT(com::Unknown* getUserContext() const);
+   ABSTRACT(dci::Unknown* getUserContext() const);
 
    template <typename ROLE>
    ROLE* toRole() const
    {
-      return com::unknown_cast<ROLE>(getUserContext());
+      return dci::unknown_cast<ROLE>(getUserContext());
    }
 };
 

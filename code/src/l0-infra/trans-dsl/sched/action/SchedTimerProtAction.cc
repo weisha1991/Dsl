@@ -55,7 +55,7 @@ namespace details
    //////////////////////////////////////////////////////////////////////////////////
    Status TimerProtAction ::startTimer(TransactionContext& context)
    {
-      TimerInfo* timerInfo = com::unknown_cast<TimerInfo>(&context);
+      TimerInfo* timerInfo = dci::unknown_cast<TimerInfo>(&context);
       CUB_ASSERT_VALID_PTR(timerInfo);
 
       return ROLE(RelativeTimer).start(*timerInfo);

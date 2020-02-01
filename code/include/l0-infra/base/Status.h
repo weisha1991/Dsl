@@ -4,7 +4,6 @@
 #include <l0-infra/base/BaseTypes.h>
 
 
-
 typedef U32 Status;
 
 enum : Status
@@ -58,6 +57,37 @@ enum CubStatus:Status
 #define __CUB_FAILED(result)  isFailStatus(result)
 
 #define CUB_IS_SUCC_STATUS(status)isSuccStatus(status)
+
+#define DEF_SIMPLE_STATUS(status, value) \
+    const Status status = value
+
+#define DEF_STATUS(status, value )\
+        DEF_SIMPLE_STATUS(USI_##status, value);
+
+#define DEF_SUCC_STATUS(status, val) DEF_STATUS(status, val)
+
+DEF_SUCC_STATUS(SUCCESS, 0);
+DEF_SUCC_STATUS(CONTINUE, 1);
+DEF_SUCC_STATUS(UNKNOWN, 2);
+DEF_SUCC_STATUS(RESTART_REQUIED, 3);
+DEF_SUCC_STATUS(STOP, 4);
+
+#define FAILED_STATUS_VALUE(value) ((0x80000000) | (value))
+
+#define DEF_SIMPLE_FAILED_STATUS(status ,value) \
+    DEF_SIMPLE_STATUS(status, value)
+#define DEF_FAILED_STATUS(status, value) \
+        DEF_SIMPLE_STATUS(USI_##status, FAILED_STATUS_VALUE(value))
+
+DEF_FAILED_STATUS(FAILED, 0);
+DEF_FAILED_STATUS(FATAL_BUG, 1);
+DEF_FAILED_STATUS(TIMEOUT, 2);
+
+const Status INTETNAL_ERROR_START = 0x00010000;
+
+#define DEF_COMMON_ERROR(errorcode, index)\
+        DEF_SIMPLE_FAILED_STATUS(errorcode, (INTETNAL_ERROR_START + index))
+
 
 
 #endif

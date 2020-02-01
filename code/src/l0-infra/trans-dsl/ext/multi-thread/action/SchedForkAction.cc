@@ -19,7 +19,7 @@ TSL_NS_BEGIN
 //////////////////////////////////////////////////////////////////////////////////
 Status SchedForkAction::exec(TransactionContext& context)
 {
-   MultiThreadContext* mt = com::unknown_cast<MultiThreadContext>(&context);
+   MultiThreadContext* mt = dci::unknown_cast<MultiThreadContext>(&context);
    CUB_ASSERT_VALID_PTR(mt);
 
    Status result = TSL_SUCCESS;

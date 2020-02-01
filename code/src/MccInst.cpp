@@ -6,8 +6,8 @@
  */
 
 #include <l3-trans/testTrans.h>
+#include <l4-sched/TransMachine.h>
 #include "l3-trans/AddTrans.h"
-
 #include <iostream>
 #include "l0-infra/trans-dsl/sched/helper/TransactionHelper.h"
 
@@ -34,14 +34,25 @@ void setNextWorkState(OpState opState)
 
 namespace
 {
+    std::vector<EventId> transMsgVec{X2_HO_REQ};
 
-    struct EntryInst:x2hod
+    struct MccInst: TransMachine
+                    , private x2hod
     {
+        MccInst() :TransMachine(this, transMsgVec)
+        {
 
+        }
 
+        BEGIN_INTERFACE_TABLE()
+            __HAS_INTERFACE(TransStatusIF)
+        END_INTERFACE_TABLE()
+
+    private:
+        IMPL_ROLE(LockableTransaction);
     };
 
-    EntryInst mccInst;
+    MccInst mccInst;
 
     Status handleOnIdle(U32 msgId, void *msg, U32 msgSize)
     {

@@ -8,10 +8,14 @@
 #ifndef INCLUDE_L3_TRANS_ADDTRANS_H_
 #define INCLUDE_L3_TRANS_ADDTRANS_H_
 
+#include <l0-infra/trans-dsl/sched/helper/FragmentHelper.h>
+#include <l0-infra/trans-dsl/sched/helper/ThrowHelper.h>
+#include <l0-infra/trans-dsl/sched/helper/WaitHelper.h>
 #include <l0-infra/trans-dsl/TransactionDSL.h>
 #include "l0-infra/event/impl/SimpleEventInfo.h"
 #include "l0-infra/event/concept/Event.h"
 #include "l0-infra/trans-dsl/sched/concept/TransactionInfo.h"
+#include "l3-trans/MccContext.h"
 
 USING_TSL_NS
 
@@ -351,14 +355,25 @@ __def(X2HodCleanup) __as
 ( __optional(HasFailedErab, __apply(CleanupFailedErab)));
 
 /////////////////////////////////////////////////////////////
-__def_mt_transaction
+__def(x2hodTrans) __as_procedure
 ( __sequential
-   ( __fork(WAIT_CANCEL_THREAD, __sequential
-                              ( __apply(WaitX2HosCancel)
-                              , __throw(E_CANCELED)))
-   , __apply(X2HodPrepare)
-   , __apply(X2HodExecute)
-   , __apply(X2HodCleanup))
-)x2hod;
+   (
+    __apply(X2HodPrepare)
+   )
+);
+
+__def()
+struct MccTimerManager: TimerInfo
+{
+    MccTimerManager(){}
+    Status load(){ return USI_SUCCESS;}
+private:
+    OVERRIDE(U32 getTimerLen(const TimerId) const)
+    {
+        return USI_SUCCESS;
+    }
+};
+
+DEF_SIMPLE_MT_TRANS(x2hod, x2hodTrans, MccContext, MccTimerManager, 1);
 
 #endif /* INCLUDE_L3_TRANS_ADDTRANS_H_ */

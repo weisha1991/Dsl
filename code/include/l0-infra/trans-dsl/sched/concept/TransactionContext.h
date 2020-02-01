@@ -23,7 +23,7 @@ struct TransactionInfo;
 struct TransactionListener;
 struct TransactionMode;
 
-struct TransactionContext : com::Unknown
+struct TransactionContext : dci::Unknown
 {
    HAS_ROLE(TransactionInfo);
    HAS_ROLE(TransactionListener);

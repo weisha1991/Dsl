@@ -13,7 +13,7 @@
 
 #include <l0-infra/event/concept/EventId.h>
 #include <l0-infra/base/Status.h>
-
+#include "l0-infra/base/Assertions.h"
 #include <cstddef>
 
 EV_NS_BEGIN
@@ -45,6 +45,13 @@ private:
    const EventInfo* info;
    mutable bool consumed;
 };
+
+#define GET_MSG_PTR(type) (static_cast<const type*>(event.getMsg()))
+
+#define EVENT_TO_MSG_VOID(type, var) \
+    const type *var = GET_MSG_PTR(type);\
+    CUB_ASSERT_VALID_PTR_VOID(var);
+
 
 EV_NS_END
 

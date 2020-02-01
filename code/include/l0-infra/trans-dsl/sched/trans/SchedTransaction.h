@@ -36,7 +36,7 @@ struct SchedTransaction : Transaction
    void updateInstanceId(InstanceId iid);
    void updateTimerInfo(const TimerInfo&);
    void updateTransactionListener(TransactionListener&);
-   void updateUserContext(com::Unknown*);
+   void updateUserContext(dci::Unknown*);
    void updateMutexScheduler(TransMutexScheduler&);
 
 private:

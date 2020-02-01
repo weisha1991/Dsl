@@ -3,7 +3,7 @@
 
 #include "l0-infra/base/dci/InterfaceDef.h"
 
-namespace com
+namespace dci
 {
     UNKNOWN_INTERFACE(Unknown, 0xFFFFFFFE)
     {
@@ -19,7 +19,7 @@ namespace com
 
 //////////////////////////////////////////////////////////////////////////
 #define BEGIN_INTERFACE_TABLE()                                    \
-    OVERRIDE(void* castTo(const ::details::InterfaceId iid) const) \
+    virtual void* castTo(const ::details::InterfaceId iid) const \
     { switch(iid) {
 
 #define END_INTERFACE_TABLE()                               \
@@ -59,13 +59,13 @@ namespace com
 //////////////////////////////////////////////////////////////////////////
 #define DECL_CONTEXT()                                  \
     private:                                            \
-        const ::com::Unknown* context;                  \
+        const ::dci::Unknown* context;                  \
     public:                                             \
-    void setUserContext(const ::com::Unknown* context)  \
+    void setUserContext(const ::dci::Unknown* context)  \
     {                                                   \
         this->context = context;                        \
     }                                                   \
-    const ::com::Unknown* getUserContext() const        \
+    const ::dci::Unknown* getUserContext() const        \
     {                                                   \
         return context;                                 \
     }
@@ -76,11 +76,11 @@ namespace com
 #define IMPL_CONTEXT_ROLE(object, role)                 \
     DECL_OBJECT_ROLE(object, role)                      \
     {                                                   \
-       __IMPL_CONTEXT_ROLE(::com::unknown_cast<role>(context))\
+       __IMPL_CONTEXT_ROLE(::dci::unknown_cast<role>(context))\
     }
 
 #define DEF_SIMPLE_CONTEXT(context, super)              \
-struct context : ::com::Unknown, protected super        \
+struct context : ::dci::Unknown, protected super        \
 {                                                       \
     BEGIN_OVERRIDE_INTERFACE_TABLE(super)               \
     END_INTERFACE_TABLE()                               \
